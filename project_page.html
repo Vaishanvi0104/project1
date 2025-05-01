@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>    
+    
+        body{
+            background-color: rgba(0, 166, 255, 0.137);
+        }
+
+        h1,h2{
+            text-align: center;
+            border:2px solid black;
+            border-radius: 10px;
+        }
+
+        .container-fluid {
+            display: flex;
+            min-height:720px;
+        }
+
+        .sidebar {
+            width: 60px;
+            max-width: 60px;
+            min-height: 720px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: baseline;
+            background-color: rgba(0, 166, 255, 0.57);
+            padding: 10px;
+        }
+
+        .sidebar button {
+            align-items: center;
+            background-color: rgba(0, 166, 255, 0.57);
+            border-radius: 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            height: 40px;
+            width: 40px;
+            font-weight: bold;
+            font-size: large;
+            color: white;
+        }
+
+        p button {
+            border: 0px;
+            background-color: white;
+            padding: 0% 0%;
+        }
+        .content {
+            width: 100%;
+            height: 100%;
+            padding-left: 20px;
+            display: none;
+            min-height: 720px;
+        }
+
+        #content0 {
+            display: block;
+        }
+
+        i {
+            color: rgb(0, 166, 255);
+        }
+
+        .active {
+            background-color: white !important; 
+            border-radius: 20px;
+            color: rgb(0, 166, 255) !important;
+        }
+
+        .test-div {
+            display: flex;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        ul {
+            margin-right: 20px;
+            float: left;
+        }
+        
+        h3 {
+            margin-left: 50px;
+        }
+
+        .box {
+            background-color: white;
+            padding-top: 15px;
+            padding-left: 20px;
+            text-align: justify;
+            border: 2px solid black;
+            margin: 10px;
+            border-radius: 50px;
+            transition: border 0.5s ease-in-out, transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out, margin 0.5s ease-in-out, border-color 0.5s ease-in-out;
+        }
+
+        .box:hover {
+            transform: translateZ(20px);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+            margin: 10px 0;
+            border-color: #000000c6;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <br>
+    <h1>Bank Data Analysis</h1>
+    <h1>Bank Data Segmentation using Python</h1>
+    <div class="container-fluid">
+        <div class="sidebar">
+            <button id="button0" onclick="toggleContent(0)" class="active">H</button>
+            <button id="button1" onclick="toggleContent(1)">1</button>
+            <button id="button2" onclick="toggleContent(2)">2</button>
+            <button id="button3" onclick="toggleContent(3)">3</button>
+            <button id="button4" onclick="toggleContent(4)">4</button>
+            <button id="button5" onclick="toggleContent(5)">5</button>
+        </div>
+        <div class="content" id="content0">
+            <h1>Welcome to Bank Data Analysis</h1>
+            <hr style="border:2px solid black;">
+
+            <div class="box">
+                <p style="padding: 0% 20%;">
+                    
+                    Welcome to our Bank Data Analysis project website. This project is the culmination of our efforts in the<br>
+                    field of machine learning, undertaken as part of our coursework at Symbiosis Centre for Distance Learning. Our<br>
+                    team comprises Vaishnavi S. Surve, Saniya M. Shaikh, and Aditya D. Naik.<br><br>
+    
+                    Our primary objective in this project was to dive deep into the world of data analysis, particularly focusing<br>
+                    on customer segmentation within the banking sector. We explored various facets of the dataset, seeking insights<br>
+                    into gender-based trends in account balances, transaction behaviors, and more.<br><br>
+    
+                    Throughout this journey, we were fortunate to have the guidance and mentorship of Amrita Mam, our esteemed<br>
+                    instructor. Her expertise and support were instrumental in shaping our project, enabling us to harness the<br>
+                    power of machine learning for meaningful analysis.<br><br>
+    
+                    We invite you to navigate through our project and explore the discoveries we've made regarding customer<br>
+                    segmentation, gender-based trends, and their implications for the banking industry. Utilize the buttons on the<br>
+                    left to explore different sections of our analysis. If you have any questions or feedback, please do not<br>
+                    hesitate to reach out.<br><br>
+    
+                    Thank you!!!<br><br>
+                </p>
+            </div>
+        </div>
+        <div class="content" id="content1">
+            <h2>1. Descriptive Analysis</h2>
+            <hr style="border:2px solid black;">
+            <p>
+                <div class="box">
+                    1. The given dataset contains approximately one million records of transactions conducted in 2016.
+                    <button id="toggleImage1" onclick="toggleImage('DS1')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS1" src="Snapshot/DS1.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS1">
+                    <br>
+                </div>
+            
+                <div class="box">
+                    2. It includes information such as transaction ID, customer ID, date of birth, location, and balance for each transaction.
+                    <button id="toggleImage2" onclick="toggleImage('DS2')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS2" src="Snapshot/DS2.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS2">
+                    <br>
+                </div>
+            
+                <div class="box">
+                    3. The average account balance for customers during 2016 was 114,998 INR.
+                    <button id="toggleImage3" onclick="toggleImage('DS3')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS3" src="Snapshot/DS3.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS3">
+                    <br>
+                </div>
+            
+                <div class="box">
+                    4. The average transaction amount was 1,566 INR.
+                    <button id="toggleImage4" onclick="toggleImage('DS4')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS4" src="Snapshot/DS4.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS4">
+                    <br>
+                </div>
+            
+                <div class="box">
+                    5. Most account balances ranged between 4,728 and 57,428 INR.
+                    <button id="toggleImage5" onclick="toggleImage('DS5')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS5" src="Snapshot/DS5.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS5">
+                    <br>
+                </div>
+            
+                <div class="box">
+                    6. The highest account balance recorded in 2016 was 11,035,495 INR.
+                    <button id="toggleImage6" onclick="toggleImage('DS6')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS6" src="Snapshot/DS6.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS6">
+                    <br>
+                </div>
+            
+                <div class="box">
+                    7. The highest transaction conducted in 2016 amounted to 1,560,034 INR.
+                    <button id="toggleImage7" onclick="toggleImage('DS7')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS7" src="Snapshot/DS7.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS7">
+                    <br>
+                </div>
+            
+                <div class="box">
+                    8. Mumbai had the highest number of transactions.
+                    <button id="toggleImage8" onclick="toggleImage('DS8')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS8" src="Snapshot/DS8.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS8">
+                    <br>
+                </div>
+            
+                <div class="box">
+                    9. The highest number of transactions was recorded on August 7, 2016.
+                    <button id="toggleImage9" onclick="toggleImage('DS9')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS9" src="Snapshot/DS9.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS9">
+                    <br>
+                </div>
+            
+                <div class="box">
+                    10. In terms of the number of transactions, the top three cities were Mumbai, New Delhi, and Bangalore, respectively.
+                    <button id="toggleImage10" onclick="toggleImage('DS10')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS10" src="Snapshot/DS10.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS10">
+                    <br>
+                </div>
+            
+                <div class="box">
+                    11. Pune had 25,690 transactions in 2016.
+                    <button id="toggleImage11" onclick="toggleImage('DS11')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS11" src="Snapshot/DS11.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS11">
+                    <br>
+                </div>
+            
+                <div class="box">
+                    12. The highest transaction amount from Pune was 1,380,002.88 INR.
+                    <button id="toggleImage12" onclick="toggleImage('DS12')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS12" src="Snapshot/DS12.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS12">
+                    <br>
+                </div>
+            
+                <div class="box">
+                    13. Most citizens of Pune had account balances ranging from 4,957 to 56,108 INR.
+                    <button id="toggleImage13" onclick="toggleImage('DS13')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS13" src="Snapshot/DS13.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS13">
+                    <br>
+                </div>
+            
+                <div class="box">
+                    14. Most transactions from Pune were in the range of 180 INR to 1,125 INR.
+                    <button id="toggleImage14" onclick="toggleImage('DS14')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS14" src="Snapshot/DS14.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS14">
+                    <br>
+                </div>
+            
+                <div class="box">
+                    15. The number of transactions by males exceeded the number of transactions by females.
+                    <button id="toggleImage15" onclick="toggleImage('DS15')"><i class="fa fa-info-circle"></i></button>
+                    <br>
+                    <img id="DS15" src="Snapshot/DS15.jpg" style="display: none; max-width: 100%;" alt="Snapshot/DS15">
+                    <br>
+                </div>
+            
+                
+            </p>
+        </div>
+        <div class="content" id="content2">
+            <h2>2. Graphical Analysis</h2>
+            <hr style="border:2px solid black;">
+
+            <div class="box">
+                <h3>Age wise Customer Distribution</h3>
+                <hr>
+                <center><img src="Snapshot/1.png" alt="Image for Graph 1" style="margin-right: auto;" width="60%"></center>
+            </div>
+            <div class="box">
+                <hr>
+                <h3>Customer Split by Gender :</h3>
+                <hr>
+                <center><img src="Snapshot/2.png" alt="Image for Graph 2" style="margin-right: auto;" width="60%"></center>
+            </div>
+            <div class="box">
+                <hr>
+                <h3>Customer Counts based on Location:</h3>
+                <hr>
+                <center><img src="Snapshot/3.png" alt="Image for Graph 3" style="margin-right: auto;" width="60%"></center>
+            </div>
+
+        </div>
+        <div class="content" id="content3">
+            <h2>3. Statistical Analysis</h2>
+            <hr style="border:2px solid black;">
+            
+            <div class="box">
+                <hr>
+                <h3>Is there any significant correlation between account balance and transaction amount ?</h3>
+                <hr>
+                <div class="test-div">
+                    <ul>
+                        <li>
+                            In the correlation analysis between account balance and transaction amount, a positive correlation coefficient of 0.0627 was calculated.
+                        </li>
+                        <li>
+                            The correlation is positive, but a value of 0.06 represents a very low correlation.
+                        </li>
+                        <li>
+                            As a result, we can conclude that there exists a very weak relationship between account balance and transaction amount.
+                        </li>
+                    </ul>
+                    <img src="Snapshot/STG1.png" alt="Image for Hypothesis 1" style="margin-left: auto;" width="500px">
+                </div>
+                <a id="toggleCodeButton1" class="btn" onclick="toggleCode('codeImage1')">Show Code</a>
+                <br><br>
+                <img src="Snapshot/ST1.jpg" id="codeImage1" style="display: none; max-width: 100%;" alt="Code Image 1">
+            </div>
+        
+            <div class="box">
+                <hr>
+                <h3>Is there significant difference in account balances between different locations ?</h3>
+                <hr>
+                <div class="test-div">
+                    <ul>
+                        <li>
+                            To test the hypothesis, an analysis of variance (ANOVA) test was conducted using the provided dataset. 
+                            The dataset was grouped by location, and account balances within each location were collected into lists.
+                        </li>
+                        <li>
+                            The F-statistic and p-value obtained from the ANOVA test were used to evaluate the differences in account 
+                            balances across various locations.
+                        </li>
+                        <li>
+                            The result of the ANOVA test indicates that there is no significant difference in account balances between 
+                            different locations.
+                        </li>
+                        <li>
+                            The p-value is <strong>greater than 0.05</strong>, which means that we fail to reject the null hypothesis.
+                        </li>
+                        <li>
+                            This suggests that location does not have a significant impact on account balances.
+                        </li>
+                    </ul>
+                    <img src="Snapshot/STG2.png" alt="Image for Hypothesis 2" style="margin-left: auto; margin-right: auto;" width="500px">
+                </div>
+                <a id="toggleCodeButton2" class="btn" onclick="toggleCode('codeImage2')">Show Code</a>
+                <br><br>
+                <img src="Snapshot/ST2.jpg" id="codeImage2" style="display: none; max-width: 100%;" alt="Code Image 2">
+            </div>
+        
+            <div class="box">
+                <hr>
+                <h3>Do gender have difference between average transaction amount ?</h3>
+                <hr>
+                <div class="test-div">
+                    <ul>
+                        <li>
+                            A t-test was conducted to assess the average transaction amounts between males and females.
+                        </li>
+                        <li>
+                            The results strongly indicate that, on average, <strong>males have significantly higher transaction amounts</strong> compared to females.
+                        </li>
+                        <li>
+                            This discrepancy may imply a potential gender-related gap in financial literacy and economic empowerment.
+                        </li>
+                        <li>
+                            It suggests that males tend to be financially stronger than females in this context.
+                        </li>
+                    </ul>
+                    <img src="Snapshot/STG3.png" alt="Image for Hypothesis 3" style="margin-left: auto;" width="500px">
+                </div>
+                <a id="toggleCodeButton3" class="btn" onclick="toggleCode('codeImage3')">Show Code</a>
+                <br><br>
+                <img src="Snapshot/ST3.jpg" id="codeImage3" style="display: none; max-width: 100%;" alt="Code Image 3">
+            </div>
+        
+            <div class="box">
+                <hr>
+                <h3>Do Mumbai and Pune have difference between no of transactions ?</h3>
+                <hr>
+                <div class="test-div">
+                    <ul>
+                        <li>
+                            We compared transaction amounts between different places, like Mumbai and Pune.
+                        </li>
+                        <li>
+                            The result clearly shows that there are way more transactions in Mumbai than in Pune.
+                        </li>
+                        <li>
+                            This suggests that the bank needs stronger servers in Mumbai due to the high number of transactions.
+                        </li>
+                        <li>
+                            It also means that Mumbai handles a lot more money transactions than Pune.
+                        </li>
+                    </ul>
+                    <img src="Snapshot/STG4.png" alt="Image for Hypothesis 4" style="margin-left: auto;" width="500px">
+                </div>
+                <a id="toggleCodeButton4" class="btn" onclick="toggleCode('codeImage4')">Show Code</a>
+                <br><br>
+                <img src="Snapshot/ST4.jpg" id="codeImage4" style="display: none; max-width: 100%;" alt="Code Image 4">
+            </div>
+        
+            <div class="box">
+                <hr>
+                <h3>Do the average account balance is higher for males than for females ?</h3>
+                <hr>
+                <div class="test-div">
+                    <ul>
+                        <li>
+                            We conducted multiple tests to compare account balances between males and females in different places.
+                        </li>
+                        <li>
+                            We decided to focus on places with at least 30 transactions because this helps us make more confident and reliable conclusions.
+                        </li>
+                        <li>
+                            Out of the 1230 locations we tested, 396 of them showed a clear difference.
+                        </li>
+                        <li>
+                            This means that, in these locations, males tend to have higher average account balances than females.
+                        </li>
+                        <li>
+                            This difference might indicate a potential gap in financial knowledge and economic strength between genders.
+                        </li>
+                        <li>
+                            It suggests that, in this scenario, males appear to be financially more stable than females.
+                        </li>
+                    </ul>
+                    <img src="Snapshot/STG5.png" alt="Image for Hypothesis 5" style="margin-left: auto;" width="500px">
+                </div>
+                <a id="toggleCodeButton5" class="btn" onclick="toggleCode('codeImage5')">Show Code</a>
+                <br><br>
+                <div id="codeImage5" style="display: none; max-width: 100%;">
+                    <img src="Snapshot/ST5.jpg" alt="Code Image 5">
+                    <img src="Snapshot/ST5A.jpg" alt="Code Image 5">
+                </div>
+            </div>
+        
+        
+        </div>
+        <div class="content" id="content4">
+            <h1>Customer Segmentation</h1>
+            <hr style="border:2px solid black;">
+
+            <div class="box">
+                <hr>
+                <h3>Distribution of Customers :</h3>
+                <hr>
+                <div class="test-div">
+                    <ul>
+                        <li>Economical, Standard, and Premium are the three main customer groups based on account balances.</li>
+                        <li>Economical customers make up the majority, constituting 99.21% of the customer base.</li>
+                        <li>Standard customers account for 0.28%, while Premium customers represent 0.01% of the total clientele.</li>
+                        <li>Gender distribution varies within these groups.</li>
+                    </ul>
+                    
+                    <img src="Snapshot/CLG1.png" alt="Image for Clustering 1" style="margin-left: auto;" width="700px">
+                </div>
+                
+            </div>
+
+            <div class="box">
+                <hr>
+                <h3>Gender Demographics :</h3>
+                <hr>
+                <img src="Snapshot/CLG2.png" alt="Image for Clustering 2" style="margin-right: auto;" width="100%">
+                <div class="test-div">
+                    <ul>
+                        <li>Within the "Economical" group, 73.04% of customers are male, while 26.96% are female.</li>
+                        <li>In the "Premium" group, the majority, 78.62%, are male customers, with 21.38% being female customers.</li>
+                        <li>Among the "Standard" group, 79.49% are male customers, and 20.51% are female customers.</li>
+                    </ul>                
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <div class="content" id="content5">
+            <h1>Time Based Analysis</h1>
+            <hr style="border:2px solid black;">
+            <p style="padding: 0% 5%;">
+
+                <div class="box">
+                    <hr>
+                    <h3>Quarter wise Analysis :</h3>
+                    <hr>
+                    <div class="test-div">
+                        <ul>
+                            <li>Year-quarter wise transaction amounts were analyzed.</li>
+                            <li>Most quarters showed consistent and stable transaction amounts.</li>
+                            <li>Quarter 3 was exceptional, with transaction amounts approximately five times higher than others.</li>
+                            <li>Consideration of seasonal patterns and external factors is warranted.</li>
+                            <li>Findings can inform marketing and business strategies.</li>
+                            <li>Future analysis may explore demographics, product usage, and economic indicators for deeper insights.</li>
+                        </ul>
+                        
+                        <img src="Snapshot/TSG1.png" alt="Image for Time Series 1" style="margin-right: auto;" width="60%">
+                    </div>
+                    
+                </div>
+
+                <div class="box">
+                    <hr>
+                    <h3>Hour wise Analysis :</h3>
+                    <hr>
+                    <center><img src="Snapshot/TSG2.png" alt="Image for Time Series 2" style="margin-right: auto;" width="70%"></center>
+                    <div class="test-div">
+                        <ul>
+                            <li>Transaction Count by Hour was analyzed.</li>
+                            <li>Hours with transaction counts exceeding 50,000 are considered "Busy Hours," including Hours 3, 6, 8, 9, 11, 14, and 16.</li>
+                            <li>Hours with transaction counts below 30,000 are labeled as "Relax Hours," including Hours 20, 23, and 24.</li>
+                            <li>Operational insights include system robustness during busy hours and efficient scheduling during relax hours.</li>
+                            <li>Customer engagement strategies can be optimized based on busy and relax hour timing.</li>
+                            <li>We can consider additional factors like day of the week for more refined analysis.</li>
+                        </ul>
+                                        
+                    </div>
+                    
+                </div>
+                
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function toggleContent(section) {
+            for (let i = 0; i <= 5; i++) {
+                document.getElementById(`content${i}`).style.display = "none";
+                document.getElementById(`button${i}`).classList.remove("active");
+            }
+            document.getElementById(`content${section}`).style.display = "block";
+            document.getElementById(`button${section}`).classList.add("active");
+        }
+
+        function toggleImage(imageId) {
+            const image = document.getElementById(imageId);
+            if (image.style.display === "none" || image.style.display === "") {
+                image.style.display = "block";
+            } else {
+                image.style.display = "none";
+            }
+        }
+
+        function toggleCode(imageId) {
+            const image = document.getElementById(imageId);
+            const button = document.getElementById(`toggleCodeButton${imageId.slice(-1)}`);
+            if (image.style.display === "none" || image.style.display === "") {
+                image.style.display = "block";
+                button.textContent = "Hide Code";
+            } else {
+                image.style.display = "none";
+                button.textContent = "Show Code";
+            }
+        }
+    </script>
+</body>
+
+</html>
